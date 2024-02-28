@@ -1,8 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --mode ssr",
+    "dev:hono": "wrangler dev server/index.js",
+    "build": "qwik build",
+    "build.client": "vite build -c vite.config.build.ts",
     "preview": "wrangler pages dev dist",
     "deploy": "$npm_execpath run build && wrangler pages deploy dist"
   },
@@ -10,9 +12,12 @@
     "hono": "^4.0.7"
   },
   "devDependencies": {
+    "@builder.io/qwik": "^1.4.5",
+    "@builder.io/qwik-city": "^1.4.5",
     "@cloudflare/workers-types": "^4.20240208.0",
     "@hono/vite-cloudflare-pages": "^0.2.4",
     "@hono/vite-dev-server": "^0.8.0",
+    "@img/sharp-win32-x64": "^0.33.2",
     "vite": "^5.0.12",
     "wrangler": "^3.25.0"
   }
